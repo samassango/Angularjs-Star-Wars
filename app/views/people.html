@@ -1,0 +1,20 @@
+<div class="row marketing" ng-controller="PeopleController">
+    <h1>Hello people</h1>
+    <button ng-click="handleListOfPeople()" >Process</button>
+
+    <table class="table table-sm table-inverse">
+        <thead>
+        <tr>
+            <th> People</th>
+            <th>Species</th>
+        </tr>
+        </thead>
+        <tbody ng-repeat="get in request_list">
+        <tr>
+            <td>{{get.name}}</td>
+            <td>{{get.items.data.classification}}</td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
