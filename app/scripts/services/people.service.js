@@ -10,8 +10,8 @@ angular.module('app.login')
 
     var service = {};
 
-    service.getListOfPeople = function () {
-        var url = "http://swapi.co/api/people/"
+    service.getListOfPeople = function (url) {
+        var url = url !== null ? url : "http://swapi.co/api/people/";
         return $http({
             method: 'get',
             url: url
@@ -30,7 +30,7 @@ angular.module('app.login')
             method:'get',
             url:speciesUrl
         }).then(function (response) {
-            console.log("species",response);
+            //console.log("species",response);
             return response;
         },function (err) {
             console

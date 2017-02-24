@@ -11,28 +11,45 @@
   function PeopleController($log, $scope, $rootScope, $cookieStore, $http, PeopleService, $window){
 
       $scope.handleListOfPeople =function () {
-          PeopleService.getListOfPeople().then(function(response){
+          console.log("listining")
+          var url = $scope.hasOwnProperty('ObjectUrl') ? $scope.ObjectUrl : null;
+          console.log(url)
+          PeopleService.getListOfPeople(url).then(function(response){
               console.log(response);
 
-              $scope.Object=response.data.results;
+              $scope.Object=response.data;
 
 
               $scope.request_list = response.data.results;
 
               $scope.request_list.forEach(function (data,index) {
-                  console.log("data",data.species[0])
+                  //console.log("data",data.species[0])
                   PeopleService.getSpecies(data.species[0]).then(function (response) {
-                      console.log("species",response)
+                      //console.log("species",response)
                       $scope.request_list[index].items = response;
                   })
               })
-console.log("Results",$scope.request_list)
+              //console.log("Results",$scope.request_list)
 
           },function(error){
               console.log(error);
           })
 
-      }
+      };
+
+      $scope.handleNextListOfPoeple = function () {
+          $scope.ObjectUrl =$scope.Object.next;
+          console.log("Next",$scope.Object)
+          $scope.handleListOfPeople();
+
+      };
+
+      $scope.handlePreviousListOfPoeple = function () {
+          $scope.ObjectUrl = $scope.Object.previous;
+          console.log("previous",$scope.Object)
+          $scope.handleListOfPeople();
+      };
+
 
   }
 

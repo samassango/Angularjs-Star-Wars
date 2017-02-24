@@ -5,7 +5,7 @@
     <table class="table table-sm table-inverse">
         <thead>
         <tr>
-            <th> People</th>
+            <th>People</th>
             <th>Species</th>
         </tr>
         </thead>
@@ -14,7 +14,10 @@
             <td>{{get.name}}</td>
             <td>{{get.items.data.classification}}</td>
         </tr>
+
         </tbody>
     </table>
 
+    <button type="submit" ng-click="handlePreviousListOfPoeple()">Previous</button>
+    <button type="submit" ng-click="handleNextListOfPoeple()">Next</button>
 </div>
