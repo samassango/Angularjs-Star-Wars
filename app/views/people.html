@@ -2,22 +2,69 @@
     <h1>Hello people</h1>
     <button ng-click="handleListOfPeople()" >Process</button>
 
-    <table class="table table-sm table-inverse">
-        <thead>
-        <tr>
-            <th>People</th>
-            <th>Species</th>
-        </tr>
-        </thead>
-        <tbody ng-repeat="get in request_list">
-        <tr>
-            <td>{{get.name}}</td>
-            <td>{{get.items.data.classification}}</td>
-        </tr>
+    <div class="row">
+        <div class="col-sm-6">
+            <table class="table table-sm table-inverse">
+                <thead>
+                <tr>
+                    <th>People</th>
+                    <th>Species</th>
+                </tr>
+                </thead>
+                <tbody ng-repeat="get in request_list">
+                <tr>
+                    <td>{{get.name}}</td>
+                    <td>{{get.items.data.classification}}</td>
+                    <!--<td  ng-controller="PersonController"><a href="#/person" type="submit"  name="person" ng-click="handleRowOnClickOfPerson(get)">view</a></td>-->
+                    <td><button type="submit"  class="btn btn-success" name="person" ng-click="handleRowOnClickOfPerson(get)">view</button></td>
+                </tr>
 
-        </tbody>
-    </table>
+                </tbody>
+            </table>
 
-    <button type="submit" ng-click="handlePreviousListOfPoeple()">Previous</button>
-    <button type="submit" ng-click="handleNextListOfPoeple()">Next</button>
+            <button type="submit" class="btn btn-success" h ng-click="handlePreviousListOfPoeple()">Previous</button>
+            <button type="submit" class="btn btn-success" ng-click="handleNextListOfPoeple()">Next</button>
+
+        </div>
+        <div class="col-sm-6">
+            <div class="panel panel-default">
+                <div class="panel-body">
+            <table class="table table-sm table-inverse">
+                <thead>
+                <tr>
+                    <th span="2">Person</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Name :</td>
+                    <td>{{selectedObject.name}}</td>
+                </tr>
+                <tr>
+                    <td>Height:</td>
+                    <td>{{selectedObject.height}}</td>
+                </tr>
+                <tr>
+                    <td>Mass:</td>
+                    <td>{{selectedObject.mass}}</td>
+                </tr>
+                <tr>
+                    <td>Home world:</td>
+                    <td>{{selectedObject.homeWorldItems.data.name}}</td>
+                </tr>
+                <tr>
+                    <td>Spiece :</td>
+                    <td>{{selectedObject.items.data.classification}}</td>
+                </tr>
+                <tr>
+                    <td>Starship :</td>
+                    <td>{{selectedObject.starshipItems.data.starship_class}}</td>
+                </tr>
+                </tbody>
+            </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>

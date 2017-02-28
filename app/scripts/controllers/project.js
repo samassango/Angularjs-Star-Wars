@@ -6,7 +6,8 @@
   .controller('ProjectDelCtrl', ProjectDelCtrl)
   .controller('ProjectEditCtrl', ProjectEditCtrl)
   .controller('ViewProjectsCtrl', ViewProjectsCtrl)
-  .controller('PeopleController', PeopleController);
+  .controller('PeopleController', PeopleController)
+  .controller('PersonController', PersonController);
 
   function PeopleController($log, $scope, $rootScope, $cookieStore, $http, PeopleService, $window){
 
@@ -27,6 +28,23 @@
                   PeopleService.getSpecies(data.species[0]).then(function (response) {
                       //console.log("species",response)
                       $scope.request_list[index].items = response;
+                  })
+              })
+
+              $scope.request_list.forEach(function (data,index) {
+                  //console.log("data",data.homeworld)
+                  PeopleService.getHomeWorld(data.homeworld).then(function (response) {
+                      //console.log("species",response)
+                      $scope.request_list[index].homeWorldItems = response;
+                  })
+              })
+
+              $scope.request_list.forEach(function (data,index) {
+                 console.log("data",data.starships[0])
+                  if(data.starships[0] !== undefined)
+                  PeopleService.getStarship(data.starships[0]).then(function (response) {
+                      //console.log("species",response)
+                      $scope.request_list[index].starshipItems = response;
                   })
               })
               //console.log("Results",$scope.request_list)
@@ -50,7 +68,19 @@
           $scope.handleListOfPeople();
       };
 
+      $scope.handleRowOnClickOfPerson = function (selectedData) {
+          console.log("I was invoked",selectedData)
+          $scope.selectedObject = selectedData;
+      }
+  }
 
+  function PersonController($log, $scope, $rootScope, $cookieStore, $http, PeopleService, $window){
+      $scope.handleRowOnClickOfPerson = function (selectedData) {
+          console.log("I was invoked new controller",selectedData)
+          $scope.selected = selectedData;
+          console.log("selected", $scope.selected)
+
+      }
   }
 
   function ProjectCtrl($log, $scope, $rootScope, $cookieStore,  $http, ProjectService, $window){

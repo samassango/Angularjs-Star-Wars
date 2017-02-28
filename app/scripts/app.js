@@ -27,6 +27,11 @@ angular
             controller: 'PeopleController',
             controllerAs: 'people'
         })
+        .when('/person', {
+            templateUrl: 'views/person.html',
+            controller: 'PersonController',
+            controllerAs: 'person'
+        })
       .when('/about', {
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl',

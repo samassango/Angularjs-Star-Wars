@@ -33,7 +33,31 @@ angular.module('app.login')
             //console.log("species",response);
             return response;
         },function (err) {
-            console
+            console.log(err)
+        })
+    }
+
+    service.getHomeWorld = function (homeWorldUrl) {
+        return $http({
+            method:'get',
+            url:homeWorldUrl
+        }).then(function (response) {
+            //console.log("species",response);
+            return response;
+        },function (err) {
+            console.log(err)
+        })
+    }
+
+    service.getStarship = function (starShipUrl) {
+        return $http({
+            method:'get',
+            url:starShipUrl
+        }).then(function (response) {
+            //console.log("species",response);
+            return response;
+        },function (err) {
+            console.log(err)
         })
     }
 
