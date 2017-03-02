@@ -7,7 +7,7 @@
   .controller('ProjectEditCtrl', ProjectEditCtrl)
   .controller('ViewProjectsCtrl', ViewProjectsCtrl)
   .controller('PeopleController', PeopleController)
-  .controller('PersonController', PersonController);
+  .controller('SearchController', SearchController);
 
   function PeopleController($log, $scope, $rootScope, $cookieStore, $http, PeopleService, $window){
 
@@ -74,13 +74,111 @@
       }
   }
 
-  function PersonController($log, $scope, $rootScope, $cookieStore, $http, PeopleService, $window){
-      $scope.handleRowOnClickOfPerson = function (selectedData) {
-          console.log("I was invoked new controller",selectedData)
-          $scope.selected = selectedData;
-          console.log("selected", $scope.selected)
+  function SearchController($log, $scope, $rootScope, $cookieStore, $http, PeopleService, $window){
 
+
+
+
+          console.log("Search was invoked");
+          var url = $scope.hasOwnProperty('ObjectUrl') ? $scope.ObjectUrl : null;
+          console.log(url)
+          PeopleService.getListOfPeople(url).then(function(response){
+              console.log(response);
+
+              $scope.search_Object=response.data;
+
+
+              $scope.search_list = response.data.results;
+
+              $scope.search_list.forEach(function (data,index) {
+                  //console.log("data",data.species[0])
+                  PeopleService.getSpecies(data.species[0]).then(function (response) {
+                      //console.log("species",response)
+                      $scope.search_list[index].items = response;
+                  })
+              })
+
+              $scope.search_list.forEach(function (data,index) {
+                  //console.log("data",data.homeworld)
+                  PeopleService.getHomeWorld(data.homeworld).then(function (response) {
+                      //console.log("species",response)
+                      $scope.search_list[index].homeWorldItems = response;
+                  })
+              })
+
+              $scope.search_list.forEach(function (data,index) {
+                  console.log("data",data.starships[0])
+                  if(data.starships[0] !== undefined)
+                      PeopleService.getStarship(data.starships[0]).then(function (response) {
+                          //console.log("species",response)
+                          $scope.search_list[index].starshipItems = response;
+                      })
+              })
+
+              //console.log("Results",$scope.request_list)
+
+          },function(error){
+              console.log(error);
+          })
+
+      $scope.listOfPeopleHandler = function () {
+          var url = $scope.hasOwnProperty('ObjectUrl') ? $scope.ObjectUrl : null;
+          console.log(url)
+          PeopleService.getListOfPeople(url).then(function(response){
+              console.log(response);
+
+              $scope.search_Object=response.data;
+
+
+              $scope.search_list = response.data.results;
+
+              $scope.search_list.forEach(function (data,index) {
+                  //console.log("data",data.species[0])
+                  PeopleService.getSpecies(data.species[0]).then(function (response) {
+                      //console.log("species",response)
+                      $scope.search_list[index].items = response;
+                  })
+              })
+
+              $scope.search_list.forEach(function (data,index) {
+                  //console.log("data",data.homeworld)
+                  PeopleService.getHomeWorld(data.homeworld).then(function (response) {
+                      //console.log("species",response)
+                      $scope.search_list[index].homeWorldItems = response;
+                  })
+              })
+
+              $scope.search_list.forEach(function (data,index) {
+                  console.log("data",data.starships[0])
+                  if(data.starships[0] !== undefined)
+                      PeopleService.getStarship(data.starships[0]).then(function (response) {
+                          //console.log("species",response)
+                          $scope.search_list[index].starshipItems = response;
+                      })
+              })
+
+              //console.log("Results",$scope.request_list)
+
+          },function(error){
+              console.log(error);
+          })
       }
+
+      $scope.handleNextListOfPoeple = function () {
+          $scope.ObjectUrl =$scope.search_Object.next;
+          console.log("Next",$scope.search_Object)
+          $scope.listOfPeopleHandler();
+
+      };
+
+      $scope.handlePreviousListOfPoeple = function () {
+          $scope.ObjectUrl = $scope.search_Object.previous;
+          console.log("previous",$scope.search_Object)
+          $scope.listOfPeopleHandler();
+      };
+
+
+      // }
   }
 
   function ProjectCtrl($log, $scope, $rootScope, $cookieStore,  $http, ProjectService, $window){

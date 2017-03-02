@@ -15,14 +15,13 @@
                 <tr>
                     <td>{{get.name}}</td>
                     <td>{{get.items.data.classification}}</td>
-                    <!--<td  ng-controller="PersonController"><a href="#/person" type="submit"  name="person" ng-click="handleRowOnClickOfPerson(get)">view</a></td>-->
                     <td><button type="submit"  class="btn btn-success" name="person" ng-click="handleRowOnClickOfPerson(get)">view</button></td>
                 </tr>
 
                 </tbody>
             </table>
 
-            <button type="submit" class="btn btn-success" h ng-click="handlePreviousListOfPoeple()">Previous</button>
+            <button type="submit" class="btn btn-success" ng-click="handlePreviousListOfPoeple()">Previous</button>
             <button type="submit" class="btn btn-success" ng-click="handleNextListOfPoeple()">Next</button>
 
         </div>

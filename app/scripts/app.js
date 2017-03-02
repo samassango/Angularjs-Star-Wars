@@ -27,10 +27,10 @@ angular
             controller: 'PeopleController',
             controllerAs: 'people'
         })
-        .when('/person', {
-            templateUrl: 'views/person.html',
-            controller: 'PersonController',
-            controllerAs: 'person'
+        .when('/search', {
+            templateUrl: 'views/search.html',
+            controller: 'SearchController',
+            controllerAs: 'search'
         })
       .when('/about', {
         templateUrl: 'views/about.html',
