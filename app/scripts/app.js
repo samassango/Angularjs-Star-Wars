@@ -32,6 +32,11 @@ angular
             controller: 'SearchController',
             controllerAs: 'search'
         })
+        .when('/map', {
+            templateUrl: 'views/map.html',
+            controller: 'MapController',
+            controllerAs: 'map'
+        })
       .when('/about', {
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl',

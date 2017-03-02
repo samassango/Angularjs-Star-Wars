@@ -21,13 +21,22 @@
 
       <!-- Optional theme -->
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
+<!--Jquery scripts is required by bootstrap-->
       <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
       <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 
       <!-- Latest compiled and minified JavaScript -->
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
+      <!--ng-map api-->
+      <script src="https://rawgit.com/allenhwkim/angularjs-google-maps/master/build/scripts/ng-map.min.js"></script>
+
+      <!--Adding a google map scripts to access the google api-->
+      <script type="text/javascript" src="http://maps.google.com/maps/api/js?&key=AIzaSyDaT5e7mo9EEkmd1nR6v6pszy8DfmOHG_0"></script>
+
+      <!--Hammer time api-->
+      <script type="text/javascript" src="http://hammerjs.github.io/dist/hammer-time.min.js"></script>
+      <script type="text/javascript" src="http://hammerjs.github.io/dist/hammer.min.js"></script>
       <!-- end -->
 
     </head>
@@ -57,7 +66,7 @@
               <ul class="nav navbar-nav">
                 <li class="active"><a href="#/">People</a></li>
                 <li><a ng-href="#/search">Search</a></li>
-
+                <li><a ng-href="#/map">Map</a></li>
                 <!--<li><a ng-href="#/login">Login</a></li>-->
               </ul>
             </div>

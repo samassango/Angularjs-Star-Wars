@@ -7,7 +7,8 @@
   .controller('ProjectEditCtrl', ProjectEditCtrl)
   .controller('ViewProjectsCtrl', ViewProjectsCtrl)
   .controller('PeopleController', PeopleController)
-  .controller('SearchController', SearchController);
+  .controller('SearchController', SearchController)
+  .controller('MapController', MapController);
 
   function PeopleController($log, $scope, $rootScope, $cookieStore, $http, PeopleService, $window){
 
@@ -181,6 +182,41 @@
       // }
   }
 
+  function MapController($log, $scope, $rootScope, $cookieStore, $http, PeopleService, $window,$timeout,NgMap){
+      console.log('Map view invoked');
+
+      NgMap.getMap().then(function(map) {
+          console.log(map.getCenter());
+          console.log('markers', map.markers);
+          console.log('shapes', map.shapes);
+      });
+
+
+      // $scope.map;
+      // $scope.markers = [];
+      // $scope.markerId = 1;
+      //
+      // //Map initialization
+      // $timeout(function(){
+      //
+      //     var latlng = new google.maps.LatLng(35.7042995, 139.7597564);
+      //     var myOptions = {
+      //         zoom: 8,
+      //         center: latlng,
+      //         mapTypeId: google.maps.MapTypeId.ROADMAP
+      //     };
+      //     $scope.map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+      //     $scope.overlay = new google.maps.OverlayView();
+      //     $scope.overlay.draw = function() {}; // empty function required
+      //     $scope.overlay.setMap($scope.map);
+      //     $scope.element = document.getElementById('map_canvas');
+      //     $scope.hammertime = Hammer($scope.element).on("hold", function(event) {
+      //         $scope.addOnClick(event);
+      //     });
+      //
+      // },100);
+
+  }
   function ProjectCtrl($log, $scope, $rootScope, $cookieStore,  $http, ProjectService, $window){
 
 
