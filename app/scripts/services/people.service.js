@@ -82,7 +82,8 @@ service.getMapRequests = function (googleUrl) {
             //console.log("species",response);
             return response;
         },function (err) {
-            console.log(err)
+            console.log("Error",err)
+            return err;
         })
     }
 

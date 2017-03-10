@@ -16,3 +16,5 @@ Run `grunt` for building and `grunt serve` for preview.
 ## Testing
 
 Running `grunt test` will run the unit tests with karma.
+
+PLEASE NOTE: Please make sure you allow permissions to retrieve your location because the map relies on your current location. And, check if you have CORS enabled when running this in the browser if it blocks the request to google maps API.

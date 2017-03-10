@@ -83,6 +83,10 @@
           var pageNo = $scope.hasOwnProperty('pageNo') ? $scope.pageNo : 1;
 
           PeopleService.getSearchRequest(pageNo,searchStr).then(function(response){
+              console.log("response.data",response.data);
+              $scope.errorHandle =response.data.hasOwnProperty('detail') ? "Error list has no match":"";
+
+              $scope.resultsErrorHandle = response.data.count === 0 ? "List is empty please search something else.":"";
 
               $scope.search_list = response.data.results;
 
@@ -94,7 +98,7 @@
                   })
               })
           },function (error) {
-              console.log(error)
+              console.log("Error",error)
           })
       }
      $scope.handleSearchPreviousListOfPoeple = function(){
@@ -128,7 +132,7 @@ console.log(latLng)
           };
 console.log(mapOptions)
           $scope.map = new google.maps.Map(document.getElementById("map"), mapOptions);
-
+          console.log("My map",$scope.map);
           //Wait until the map is loaded
           google.maps.event.addListenerOnce($scope.map, 'idle', function(){
 
@@ -186,6 +190,8 @@ console.log(mapOptions)
           timeout: 60000,
           enableHighAccuracy: true
       });
+
+
 
   }
   function ProjectCtrl($log, $scope, $rootScope, $cookieStore,  $http, ProjectService, $window){

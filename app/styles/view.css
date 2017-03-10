@@ -115,3 +115,7 @@ label.light {
   }
 
 }
+#map {
+  height: 800px;
+  width: 100%;
+}
