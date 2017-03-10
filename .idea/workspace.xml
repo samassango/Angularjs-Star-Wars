@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="98c2b3a4-2e7a-4266-a769-e2525b01aeb1" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.tmp/styles/login.css" afterPath="$PROJECT_DIR$/.tmp/styles/login.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.tmp/styles/main.css" afterPath="$PROJECT_DIR$/.tmp/styles/main.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.tmp/styles/view.css" afterPath="$PROJECT_DIR$/.tmp/styles/view.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/scripts/controllers/project.js" afterPath="$PROJECT_DIR$/app/scripts/controllers/project.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/scripts/services/people.service.js" afterPath="$PROJECT_DIR$/app/scripts/services/people.service.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/styles/view.css" afterPath="$PROJECT_DIR$/app/styles/view.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/search.html" afterPath="$PROJECT_DIR$/app/views/search.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -68,11 +66,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="285">
-              <caret line="19" column="203" lean-forward="true" selection-start-line="19" selection-start-column="203" selection-end-line="19" selection-end-column="203" />
+              <caret line="19" column="56" lean-forward="true" selection-start-line="19" selection-start-column="56" selection-end-line="19" selection-end-column="56" />
               <folding />
             </state>
           </provider>
@@ -118,7 +116,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="search.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="search.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/search.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="300">
@@ -154,10 +152,10 @@
         <option value="$PROJECT_DIR$/app/index.html" />
         <option value="$PROJECT_DIR$/app/views/map.html" />
         <option value="$PROJECT_DIR$/app/styles/view.css" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/app/scripts/services/people.service.js" />
         <option value="$PROJECT_DIR$/app/scripts/controllers/project.js" />
         <option value="$PROJECT_DIR$/app/views/search.html" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -413,12 +411,12 @@
       <option name="presentableId" value="Default" />
       <updated>1487927235422</updated>
       <workItem from="1487927236871" duration="34246000" />
-      <workItem from="1489043600809" duration="13618000" />
+      <workItem from="1489043600809" duration="13820000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47864000" />
+    <option name="totallyTimeSpent" value="48066000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1280" y="-159" width="1920" height="1080" extended-state="0" />
@@ -660,14 +658,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="203" lean-forward="true" selection-start-line="19" selection-start-column="203" selection-end-line="19" selection-end-column="203" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/scripts/services/project.services.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -704,6 +694,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="20" column="6" lean-forward="true" selection-start-line="20" selection-start-column="6" selection-end-line="20" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="56" lean-forward="true" selection-start-line="19" selection-start-column="56" selection-end-line="19" selection-end-column="56" />
           <folding />
         </state>
       </provider>
