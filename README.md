@@ -9,6 +9,12 @@ version 0.15.1.
 2. Clone the repository using command `git clone` https://github.com/samassango/Angularjs-Star-Wars.git
 3. run `grunt serve` command inside the project folder.
 
+##Files worked on
+1. A file for controllers is in `app/scripts/controllers/project.js`.
+2. A file for service is in `app/scripts/services/prople.service.js`.
+3. Configurations such as routing is in `app/scripts/app.js`.
+4. Views are in `app/views/' which is `people.html`, `search.html`,`map.html` and style in `styles`.
+
 ## Build & development
 
 Run `grunt` for building and `grunt serve` for preview.
