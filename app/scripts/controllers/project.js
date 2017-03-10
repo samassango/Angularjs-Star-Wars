@@ -76,18 +76,13 @@
   }
 
   function SearchController($log, $scope, $rootScope, $cookieStore, $http, PeopleService, $window){
+      $scope.pageNo = 1;
+      $scope.handlePeopleSearchList = function(){
 
+          var searchStr = $scope.name;
+          var pageNo = $scope.hasOwnProperty('pageNo') ? $scope.pageNo : 1;
 
-
-
-          console.log("Search was invoked");
-          var url = $scope.hasOwnProperty('ObjectUrl') ? $scope.ObjectUrl : null;
-          console.log(url)
-          PeopleService.getListOfPeople(url).then(function(response){
-              console.log(response);
-
-              $scope.search_Object=response.data;
-
+          PeopleService.getSearchRequest(pageNo,searchStr).then(function(response){
 
               $scope.search_list = response.data.results;
 
@@ -98,88 +93,22 @@
                       $scope.search_list[index].items = response;
                   })
               })
-
-              $scope.search_list.forEach(function (data,index) {
-                  //console.log("data",data.homeworld)
-                  PeopleService.getHomeWorld(data.homeworld).then(function (response) {
-                      //console.log("species",response)
-                      $scope.search_list[index].homeWorldItems = response;
-                  })
-              })
-
-              $scope.search_list.forEach(function (data,index) {
-                  console.log("data",data.starships[0])
-                  if(data.starships[0] !== undefined)
-                      PeopleService.getStarship(data.starships[0]).then(function (response) {
-                          //console.log("species",response)
-                          $scope.search_list[index].starshipItems = response;
-                      })
-              })
-
-              //console.log("Results",$scope.request_list)
-
-          },function(error){
-              console.log(error);
-          })
-
-      $scope.listOfPeopleHandler = function () {
-          var url = $scope.hasOwnProperty('ObjectUrl') ? $scope.ObjectUrl : null;
-          console.log(url)
-          PeopleService.getListOfPeople(url).then(function(response){
-              console.log(response);
-
-              $scope.search_Object=response.data;
-
-
-              $scope.search_list = response.data.results;
-
-              $scope.search_list.forEach(function (data,index) {
-                  //console.log("data",data.species[0])
-                  PeopleService.getSpecies(data.species[0]).then(function (response) {
-                      //console.log("species",response)
-                      $scope.search_list[index].items = response;
-                  })
-              })
-
-              $scope.search_list.forEach(function (data,index) {
-                  //console.log("data",data.homeworld)
-                  PeopleService.getHomeWorld(data.homeworld).then(function (response) {
-                      //console.log("species",response)
-                      $scope.search_list[index].homeWorldItems = response;
-                  })
-              })
-
-              $scope.search_list.forEach(function (data,index) {
-                  console.log("data",data.starships[0])
-                  if(data.starships[0] !== undefined)
-                      PeopleService.getStarship(data.starships[0]).then(function (response) {
-                          //console.log("species",response)
-                          $scope.search_list[index].starshipItems = response;
-                      })
-              })
-
-              //console.log("Results",$scope.request_list)
-
-          },function(error){
-              console.log(error);
+          },function (error) {
+              console.log(error)
           })
       }
+     $scope.handleSearchPreviousListOfPoeple = function(){
+          $scope.pageNo = $scope.pageNo - 1;
+          console.log("Previous",$scope.pageNo)
+         $scope.handlePeopleSearchList();
+     }
+     $scope.handleSearchNextListOfPoeple = function () {
+         $scope.pageNo = Number($scope.pageNo) + 1;
+         console.log("Next",$scope.pageNo)
+         $scope.handlePeopleSearchList();
+     }
+          console.log("Search was invoked");
 
-      $scope.handleNextListOfPoeple = function () {
-          $scope.ObjectUrl =$scope.search_Object.next;
-          console.log("Next",$scope.search_Object)
-          $scope.listOfPeopleHandler();
-
-      };
-
-      $scope.handlePreviousListOfPoeple = function () {
-          $scope.ObjectUrl = $scope.search_Object.previous;
-          console.log("previous",$scope.search_Object)
-          $scope.listOfPeopleHandler();
-      };
-
-
-      // }
   }
 
   function MapController($log, $scope, $rootScope, $cookieStore, $http, PeopleService, $window){
