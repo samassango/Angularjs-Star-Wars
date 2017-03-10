@@ -60,6 +60,31 @@ angular.module('app.login')
             console.log(err)
         })
     }
+service.getMapRequests = function (googleUrl) {
+    return $http({
+        method:'get',
+        url:googleUrl,
+       'Access-Control-Allow-Origin':'*'
+    }).then(function (response) {
+        console.log("map",response);
+        return response;
+    },function (err) {
+        console.log(err)
+    })
+}
+    service.getSearchRequest = function (pageNo,searchStr) {
+        var url = 'http://swapi.co/api/people/?page='+pageNo+'&search='+searchStr;
+        console.log(url)
+        return $http({
+            method:'get',
+            url:url
+        }).then(function (response) {
+            //console.log("species",response);
+            return response;
+        },function (err) {
+            console.log(err)
+        })
+    }
 
      return service;
 

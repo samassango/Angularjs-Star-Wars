@@ -182,39 +182,81 @@
       // }
   }
 
-  function MapController($log, $scope, $rootScope, $cookieStore, $http, PeopleService, $window,$timeout,NgMap){
+  function MapController($log, $scope, $rootScope, $cookieStore, $http, PeopleService, $window){
       console.log('Map view invoked');
 
-      NgMap.getMap().then(function(map) {
-          console.log(map.getCenter());
-          console.log('markers', map.markers);
-          console.log('shapes', map.shapes);
+      $scope.markers = [];
+
+      navigator.geolocation.getCurrentPosition(function (position) {
+console.log(position)
+          var latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+var centerLatlng = {lat: position.coords.latitude, lng: position.coords.longitude}
+console.log(latLng)
+          var mapOptions = {
+              center: centerLatlng,
+              zoom: 12,
+              mapTypeId: google.maps.MapTypeId.ROADMAP
+          };
+console.log(mapOptions)
+          $scope.map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+          //Wait until the map is loaded
+          google.maps.event.addListenerOnce($scope.map, 'idle', function(){
+
+              //TO DO add this to a config file
+              var nearbysearchapiEndPoint ='https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=';
+
+              $scope.API = nearbysearchapiEndPoint + position.coords.latitude + "," + position.coords.longitude + "&radius=10000&type=comic store&key=AIzaSyD8Or6tO3h801EW-QtIDI_VG-93B5OnoIM"; //TODO add the key to the config file
+
+              // PeopleService.getMapRequests($scope.API).then(function (response) {
+              //     console.log("response",response);
+              // })
+
+              $http.get($scope.API).success(function (response) {
+
+                  $scope.locations = response.results;
+
+                  $.each($scope.locations, function (index, value) {
+
+                      var latLng = new google.maps.LatLng($scope.locations[index].geometry.location.lat, $scope.locations[index].geometry.location.lng);
+
+                      var marker =  new google.maps.Marker({
+                          map: $scope.map,
+                          animation: google.maps.Animation.DROP,
+                          position: latLng,
+                          title: $scope.locations[index].name
+                      });
+
+                      var direction = 'http://maps.google.com/maps?saddr=' + position.coords.latitude + "," + position.coords.longitude + "&daddr=" + $scope.locations[index].geometry.location.lat + "," + $scope.locations[index].geometry.location.lng;
+//console.log(direction);
+                      var infoWindow = new google.maps.InfoWindow({
+                          content: $scope.locations[index].name + "<br><a class=\"button get-directions\" data-marker=\"{{ infoWindow.id }}\" href="+ direction+ ">Get Directions</a>"
+                      });
+
+                      google.maps.event.addListener(marker, 'click', function () {
+                          infoWindow.open($scope.map, marker);
+                      });
+
+                  });
+
+              });
+
+          });
+
+
+      }, function (error) {
+
+          alert({
+              message: 'Please enable you GPS and try again.!',
+              modifier: 'material'
+          });
+
+
+      }, {
+          maximumAge: Infinity,
+          timeout: 60000,
+          enableHighAccuracy: true
       });
-
-
-      // $scope.map;
-      // $scope.markers = [];
-      // $scope.markerId = 1;
-      //
-      // //Map initialization
-      // $timeout(function(){
-      //
-      //     var latlng = new google.maps.LatLng(35.7042995, 139.7597564);
-      //     var myOptions = {
-      //         zoom: 8,
-      //         center: latlng,
-      //         mapTypeId: google.maps.MapTypeId.ROADMAP
-      //     };
-      //     $scope.map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-      //     $scope.overlay = new google.maps.OverlayView();
-      //     $scope.overlay.draw = function() {}; // empty function required
-      //     $scope.overlay.setMap($scope.map);
-      //     $scope.element = document.getElementById('map_canvas');
-      //     $scope.hammertime = Hammer($scope.element).on("hold", function(event) {
-      //         $scope.addOnClick(event);
-      //     });
-      //
-      // },100);
 
   }
   function ProjectCtrl($log, $scope, $rootScope, $cookieStore,  $http, ProjectService, $window){
